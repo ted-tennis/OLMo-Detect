@@ -25,11 +25,6 @@ MATCHED_CONFIG: dict[str, dict[str, float]] = {
     "OLMo2-7B-Instruct":  {"alpha": 0.075, "length_cap": 50, "prompt_ratio": 0.5},
     "OLMo2-13B-Instruct": {"alpha": 0.15, "length_cap": 50, "prompt_ratio": 0.25},
     "OLMo2-32B-Instruct": {"alpha": 0.3, "length_cap": 50, "prompt_ratio": 0.25},
-    # Cross-model generalization (rebuttal Setting 1); tuned on pooled RLVR dev.
-    "Llama-3.1-Tulu-3-8B": {"alpha": 0.0, "length_cap": 50, "prompt_ratio": 0.75},
-    # Setting 2 (GSM8K question-only); tuned on gsm8k_qonly dev subsample.
-    "OpenMath2-Llama3.1-8B":     {"alpha": 0.15, "length_cap": 50, "prompt_ratio": 0.25},
-    "OLMo2-7B-Instruct-qonly":   {"alpha": 0.05, "length_cap": 50, "prompt_ratio": 0.5},
 }
 
 SHIFTED_CONFIG: dict[str, dict[str, float]] = {

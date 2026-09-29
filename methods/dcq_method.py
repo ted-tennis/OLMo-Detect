@@ -51,8 +51,6 @@ MATCHED_CONFIG: dict[str, dict[str, Any]] = {
     "OLMo2-7B-Instruct":  {"score_type": "min_pcorrect"},
     "OLMo2-13B-Instruct": {"score_type": "pcorrect_kappa_np"},
     "OLMo2-32B-Instruct": {"score_type": "pcorrect_kappa"},
-    # Cross-model generalization (rebuttal Setting 1); tuned on pooled RLVR dev.
-    "Llama-3.1-Tulu-3-8B": {"score_type": "pcorrect_kappa"},
 }
 
 SHIFTED_CONFIG: dict[str, dict[str, Any]] = {

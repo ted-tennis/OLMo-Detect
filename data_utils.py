@@ -25,7 +25,6 @@ DATASET_TYPE_BY_KEYWORD = {
     "chosen":       "paragraph",
     "rejected":     "paragraph",
     "dpo":          "dpo",
-    "qonly":        "paragraph",   # GSM8K question-only ablation files (data/gsm8k_qonly/*.jsonl), 2026-09-21
     "posttraining": "paragraph",
 }
 

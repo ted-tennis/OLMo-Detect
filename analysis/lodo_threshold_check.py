@@ -1,8 +1,8 @@
-"""Threshold-transfer check for the supervisor's 3-setting proposal (24 Sep 2026). NO GPU; reuses analysis/subsample_pooled.py's loaders.
+"""Threshold-transfer check across the three domain-knowledge settings. NO GPU; reuses analysis/subsample_pooled.py's loaders.
 
 For every unsupervised method (EMMIA/SelfCrit excluded) x size, on the same 100+100-per-domain subsamples as table:subsample_pooled (R draws):
   acc_in   (setting 1 proxy): threshold tuned INSIDE the domain (2-fold split, both directions averaged) -> the domain's own dev set is not scored, so this is its unbiased proxy
-  acc_all9 (setting 2)      : ONE threshold tuned on the pooled 9-domain subsample, applied to each domain (in-sample, as the supervisor specified: "tuned on whole data")
+  acc_all9 (setting 2)      : ONE threshold tuned on the pooled 9-domain subsample, applied to each domain (in-sample, i.e. tuned on the whole data)
   acc_lodo (setting 3)      : threshold tuned on the pooled OTHER-8-domain subsample, applied to the held-out domain
 Thresholds maximise accuracy (predict member iff score >= t; score orientation = the paper's: higher = member). Accuracies are macro-averaged over the 9 domains.
 Also reports, per method/size, the mean over domains of |acc_all9 - acc_lodo| and the max, i.e. how far setting 3 is from setting 2 for a training-free MIA.

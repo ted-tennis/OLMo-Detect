@@ -178,7 +178,7 @@ def main():
     ap.add_argument("--split", choices=["matched", "shifted"], default="matched",
                     help="Which member split to score (default: matched).")
     ap.add_argument("--results-dir", default="results",
-                    help="Score directory to read (default: results/; use results_repro/ to score a fresh run_all.slurm).")
+                    help="Score directory to read (default: results/; use results_repro/ to score a fresh run_all.py run).")
     a = ap.parse_args()
     if a.list or not a.method:
         print("methods:", ", ".join(METHODS)); return

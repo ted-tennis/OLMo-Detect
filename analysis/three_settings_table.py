@@ -1,4 +1,4 @@
-"""ONE compact appendix table for the supervisor's three questions (24 Sep 2026): per method, Model-Avg over sizes of
+"""ONE compact appendix table for the three domain-knowledge settings: per method, Model-Avg over sizes of
   Q1 given the domain : macro AUC (subsample) + accuracy with the in-domain threshold
   Q2 domain unknown   : pooled AUC            + accuracy with one threshold tuned on all 9 domains
   Q3 unseen domain    : accuracy with the threshold tuned on the other 8 domains (LODO)   [AUC is unchanged by construction]

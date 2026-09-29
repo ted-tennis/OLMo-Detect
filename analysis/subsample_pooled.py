@@ -1,4 +1,4 @@
-"""Subsampling experiment (supervisor request, 24 Sep 2026; NOT a main-paper table).
+"""Subsampling experiment (NOT a main-paper table).
 
 For every domain (9 domains of STRUCT in paper_tables.py; multi-subset domains are pooled over their subsets) and every model size,
 draw N_PER_SIDE members + N_PER_SIDE non-members uniformly without replacement (same instances for every method), then report

@@ -6,7 +6,7 @@ Settings:
   matched_olmo2 (unsup+sup) : OLMo2-{1,7,13,32}B-Instruct, member_*_matched vs non-member_*
   shifted_olmo2 (unsup)     : same models, member_*_shifted (no gsm8k/rlvr)
   olmo3 (representative)     : Olmo-3-* variants, matched, domains {dclm,gsm8k,cot-gsm8k}
-  nonolmo (representative)   : MetaMath/Tulu-3/DCLM-Baseline, matched, domains {dclm,gsm8k,cot-gsm8k}
+  nonolmo (representative)   : DCLM-Baseline, matched, domains {dclm,gsm8k,cot-gsm8k}
 Instance-verify: a score file's sample `text` set is matched against the CURRENT benchmark TEST instances;
 only current-instance samples are copied. Coverage = covered/current-test-N."""
 import sys as _sys, pathlib as _pl
@@ -47,7 +47,7 @@ UNSUP=["loss_zlib_lowercase","minkprob","dcpdd","recall","camia_faithful","pac",
 SUP=["fsd","mia_tuner","camia_lr"]; REP=["loss_zlib_lowercase","minkprob","dcpdd","pac","camia_faithful"]
 OLMO2=[f"OLMo2-{s}-Instruct" for s in ["1B","7B","13B","32B"]]
 OLMO3=["Olmo-3-7B-Instruct","Olmo-3.1-32B-Instruct","Olmo-3-1025-7B","Olmo-3-7B-Think","Olmo-3-7B-RL-Zero-Math"]
-NONOLMO=["MetaMath-7B","MetaMath-13B","MetaMath-70B","Llama-3.1-Tulu-3-8B","DCLM-1B","DCLM-Baseline-7B"]
+NONOLMO=["DCLM-1B","DCLM-Baseline-7B"]
 # ---- leaves: (label, unc_dir, con_matched_dir, con_shifted_dir|None, bench_unc_glob, bench_conM_glob, bench_conS_glob|None) ----
 def tv(p,sub=""): return [f"{B}/{p}/test/{sub}"] if sub else [f"{B}/{p}/test/*.jsonl"]
 def sg(p,sub): return [f"{B}/{p}/test/*{sub}*.jsonl"]

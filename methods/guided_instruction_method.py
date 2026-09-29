@@ -55,11 +55,6 @@ MATCHED_CONFIG: dict[str, dict[str, Any]] = {
     "OLMo2-7B-Instruct":  {"score_type": "rouge_delta",  "min_p": 40, "max_p": 70},
     "OLMo2-13B-Instruct": {"score_type": "rouge_delta",  "min_p": 40, "max_p": 70},
     "OLMo2-32B-Instruct": {"score_type": "rouge_guided", "min_p": 40, "max_p": 70},
-    # Cross-model generalization (rebuttal Setting 1); tuned on pooled RLVR dev.
-    "Llama-3.1-Tulu-3-8B": {"score_type": "rouge_delta", "min_p": 40, "max_p": 70},
-    # Setting 2 (GSM8K question-only); tuned on gsm8k_qonly dev subsample.
-    "OpenMath2-Llama3.1-8B":     {"score_type": "rouge_guided", "min_p": 40, "max_p": 70},
-    "OLMo2-7B-Instruct-qonly":   {"score_type": "rouge_guided", "min_p": 40, "max_p": 70},
 }
 
 # 2026-09-24: shifted members are scored against the SAME non-member files as matched members, so the score type must match the

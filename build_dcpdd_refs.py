@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 """
-Build DC-PDD C4 token-frequency references for NON-OLMo2 tokenizers (e.g. MetaMath-Mistral-7B,
-Llama-3.1-Tulu-3-8B), matching the released OLMo2 reference scale (max_tokens_per_sample=4096,
+Build DC-PDD C4 token-frequency references for NON-OLMo2 tokenizers (e.g. SmolLM2-1.7B),
+matching the released OLMo2 reference scale (max_tokens_per_sample=4096,
 ~1.07M C4 docs). Reads C4 *.json.gz shards directly (no arrow conversion needed) and writes
 methods/dcpdd_data/c4_token_occurrence_<model_name>.json in the SAME payload format the DCPDD
 method loader expects (token_frequency dict keyed by str(token_id); counts include repeats up to
 max_tokens per doc, add_special_tokens=True — identical semantics to build_token_frequency_for_tokenizer).
 
 Usage:
-  python build_dcpdd_refs.py --models olmo_models/MetaMath-Mistral-7B olmo_models/Llama-3.1-Tulu-3-8B \
+  python build_dcpdd_refs.py --models olmo_models/SmolLM2-1.7B \
       --c4-glob 'data/c4_raw/en/*.json.gz' --out-dir methods/dcpdd_data \
       --max-tokens 4096 --max-docs 1068952 --batch-size 512
 Idempotent: skips a model whose output json already exists (unless --force).

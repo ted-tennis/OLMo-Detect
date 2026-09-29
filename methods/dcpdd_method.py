@@ -255,7 +255,7 @@ class DCPDDMethod(BaseMethod):
 
     def _reference_path(self, model_name: str) -> Path:
         # Per-tokenizer C4 reference: prefer c4_token_occurrence_<model_name>.json when it exists
-        # (built for non-OLMo2 tokenizers, e.g. MetaMath-Mistral-7B, Llama-3.1-Tulu-3-8B — their
+        # (built for non-OLMo2 tokenizers, e.g. SmolLM2-1.7B, DCLM-1B — their
         # vocabularies differ from OLMo 2, so the OLMo 2 frequency map is NOT valid for them).
         # Falls back to the OLMo2-Instruct reference otherwise — which is also correct for OLMo 3
         # (identical tokenizer, vocab 100278) and preserves the original OLMo 2 behaviour.
