@@ -12,3 +12,4 @@ __pycache__/
 !/tables/.gitkeep
 /analysis/logs/*
 !/analysis/logs/emmia_dev_select.json
+!/analysis/logs/smollm2_excluded_nonmembers.json

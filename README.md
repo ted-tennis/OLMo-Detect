@@ -209,22 +209,10 @@ Each external model is scored on the domain it actually trained on:
 | `olmo_models/SmolLM2-1.7B`          | [HuggingFaceTB/SmolLM2-1.7B](https://huggingface.co/HuggingFaceTB/SmolLM2-1.7B)       | DCLM |
 
 ```bash
-hf download HuggingFaceTB/SmolLM2-1.7B --local-dir olmo_models/SmolLM2-1.7B
+hf download <hf_model> --local-dir <model_dir>
 ```
 
-**Step 1: Build the DCPDD reference.**
-
-DCPDD needs a C4 token-frequency reference per tokenizer, and only OLMo 2's is included. Skip this only for models sharing OLMo 2's tokenizer; otherwise DCPDD silently falls back to the OLMo 2 reference, which is wrong.
-```bash
-hf download allenai/c4 --repo-type dataset --local-dir data/c4_raw \
-    --include 'en/c4-train.0000[0-2]-of-01024.json.gz'          # 3 shards cover the default 1,068,952 documents
-python build_dcpdd_refs.py --models <model_dir> --c4-glob '<c4_shards>' --out-dir methods/dcpdd_data
-```
-- `<model_dir>`: model directory from the table above.
-- `<c4_shards>`: glob over the C4 `en` shards (`*.json.gz`).
-- writes `methods/dcpdd_data/c4_token_occurrence_<model>.json`.
-
-**Step 2: Score the model on its domain.**
+**Score the model on its domain.**
 
 ```bash
 python run_detection.py --model <model_dir> --data <member_test> <non-member_test> \
@@ -236,16 +224,11 @@ python run_detection.py --model <model_dir> --data <member_test> <non-member_tes
 
 **Example.**
 
-SmolLM2-1.7B on DCLM, end to end:
+DCB-1B (`olmo_models/DCLM-1B`) on DCLM:
 ```bash
-hf download HuggingFaceTB/SmolLM2-1.7B --local-dir olmo_models/SmolLM2-1.7B
-hf download allenai/c4 --repo-type dataset --local-dir data/c4_raw \
-    --include 'en/c4-train.0000[0-2]-of-01024.json.gz'
+hf download TRI-ML/DCLM-1B --local-dir olmo_models/DCLM-1B
 
-python build_dcpdd_refs.py --models olmo_models/SmolLM2-1.7B \
-    --c4-glob 'data/c4_raw/en/*.json.gz' --out-dir methods/dcpdd_data
-
-python run_detection.py --model olmo_models/SmolLM2-1.7B \
+python run_detection.py --model olmo_models/DCLM-1B \
     --data benchmark/pretraining/dclm/member/matched/test/member_pretraining_dclm_matched_test.jsonl \
            benchmark/pretraining/dclm/non-member/test/non-member_pretraining_dclm_test.jsonl \
     --method loss_zlib_lowercase minkprob dcpdd pac \
